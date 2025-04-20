@@ -51,6 +51,7 @@ void humidifierRun(){
             humidState = checkHumid();
             setTimer(3,500);
         }
+        lightController(HUMID, OFF);
         break;
     }
 }
