@@ -8,7 +8,7 @@ int humidState = INIT;
 
 int checkHumid (){
     if (humidity > humidThreshold){
-        return GREEN;
+        return LOW;
     }
     else return CHECKING;
 }
@@ -22,23 +22,23 @@ void humidifierRun(){
     setTimer(3,500);
     break;
 
-    case GREEN:
+    case LOW:
     if (isTimerExpired(3) == 1){
-        humidState = YELLOW;
+        humidState = MID;
         setTimer(3,300);
         }
     lightController(HUMID, GREEN);
     break;
 
-    case YELLOW:
+    case MID:
     if (isTimerExpired(3) == 1){
-        humidState = RED;
+        humidState = HIGH;
         setTimer(3,200);
         }
     lightController(HUMID, YELLOW);
     break;
 
-    case RED:
+    case HIGH:
     if (isTimerExpired(3) == 1){
         humidState = checkHumid();
         setTimer(3,500);
