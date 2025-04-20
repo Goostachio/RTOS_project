@@ -1,6 +1,6 @@
-#ifndef HTD20_H_
-#define HTD20_H_
+#ifndef HT_SENSOR_H
+#define HT_SENSOR_H
 
-    void htSensor();
+void htSensor_read();
 
-#endif HTD20_H_
+#endif
