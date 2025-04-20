@@ -8,6 +8,7 @@
 #define RED 1
 #define YELLOW 2
 #define GREEN 3
+#define OFF 4
 
 void setupLight (int LED);
 void lightController (int LED, int color);
