@@ -12,6 +12,7 @@ int stateSensor = INIT;
 void htSensor_read() {
   switch (stateSensor) {
     case INIT:
+      Serial.begin(115200);
       Wire.begin(GPIO_NUM_11, GPIO_NUM_12);
       dht20.begin();
       setTimer(0, 500); 
