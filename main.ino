@@ -6,7 +6,6 @@
 #include <Blinky_task.h>
 #include <HT_Sensor.h>
 
-
 void TIMER_ISR(void *pvParameters) {
   while (1) {
     SCH_Update();
@@ -15,12 +14,9 @@ void TIMER_ISR(void *pvParameters) {
 }
 
 void setup() {
-  Serial.begin(115200);
-
   xTaskCreate(TIMER_ISR, "TIMER_ISR", 2048, NULL, 2, NULL);
 
   SCH_Init();
-
 
   SCH_Add_Task(heater, 1, 1);
   SCH_Add_Task(coolerRun, 2, 1);
@@ -30,8 +26,6 @@ void setup() {
   SCH_Add_Task(blinky, 4, 100);
   SCH_Add_Task(htSensor_read, 0, 500);
 }
-
-
 
 void loop() {
   SCH_Dispatch_Tasks();
