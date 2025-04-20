@@ -22,6 +22,7 @@ void heater(){
         setupLight(HEATER);
         heaterState = checkTemp();
         setTimer(1,100);
+        lightController(HEATER, OFF);
         break;
 
         case NOT_RISKY:
