@@ -1,7 +1,9 @@
 #ifndef BLINKY_H_
 #define BLINKY_H_
 
-#define LED_PIN 48
+#define START 0
+#define BLINK 1
+#define NO_BLINK 2
 
 void blinky();
 
