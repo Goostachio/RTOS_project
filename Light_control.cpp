@@ -41,6 +41,11 @@ void lightController (int LED, int color){
         digitalWrite(D3, HIGH);
         digitalWrite(D4, LOW);
           break;
+
+        case OFF:
+        digitalWrite(D3, LOW);
+        digitalWrite(D4, LOW);
+          break;
         }
         break;
     
@@ -61,6 +66,11 @@ void lightController (int LED, int color){
         digitalWrite(D5, HIGH);
         digitalWrite(D6, LOW);
           break;
+
+        case OFF:
+        digitalWrite(D5, LOW);
+        digitalWrite(D6, LOW);
+          break;
         }
         break;
 
@@ -79,6 +89,11 @@ void lightController (int LED, int color){
 
         case GREEN:
         digitalWrite(D7, HIGH);
+        digitalWrite(D8, LOW);
+          break;
+        
+        case OFF:
+        digitalWrite(D7, LOW);
         digitalWrite(D8, LOW);
           break;
         }
