@@ -7,7 +7,7 @@ float humidThreshold = 75;
 int humidState = INIT;
 
 int checkHumid (){
-    if (humidity > humidThreshold){
+    if (humidity < humidThreshold){
         return LOW;
     }
     else return CHECKING;
