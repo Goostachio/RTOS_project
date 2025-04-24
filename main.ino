@@ -18,12 +18,12 @@ void setup() {
 
   SCH_Init();
 
-  SCH_Add_Task(heater, 1, 1);
-  SCH_Add_Task(coolerRun, 2, 1);
-  SCH_Add_Task(humidifierRun, 3, 1);
-  SCH_Add_Task(timerRun, 5, 1);
+  SCH_Add_Task(heater, 0, 1);
+  SCH_Add_Task(coolerRun, 0, 1);
+  SCH_Add_Task(humidifierRun, 0, 1);
+  SCH_Add_Task(timerRun, 0, 1);
 
-  SCH_Add_Task(blinky, 4, 100);
+  SCH_Add_Task(blinky, 0, 100);
   SCH_Add_Task(htSensor_read, 0, 500);
 }
 
