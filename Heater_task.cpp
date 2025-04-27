@@ -21,14 +21,14 @@ void heater(){
         case CHECKING:
         setupLight(HEATER);
         heaterState = checkTemp();
-        setTimer(1,100);
+        setTimer(1,500);
         lightController(HEATER, OFF);
         break;
 
         case NOT_RISKY:
         if (isTimerExpired(1) == 1){
             heaterState = checkTemp();
-            setTimer(1,100);
+            setTimer(1,500);
         }
         lightController(HEATER, GREEN);
         break;
@@ -36,7 +36,7 @@ void heater(){
         case SLIGHTLY_RISKY:
         if (isTimerExpired(1) == 1){
             heaterState = checkTemp();
-            setTimer(1,100);
+            setTimer(1,500);
         }
         lightController(HEATER, YELLOW);
         break;
@@ -44,7 +44,7 @@ void heater(){
         case RISKY:
         if (isTimerExpired(1) == 1){
             heaterState = checkTemp();
-            setTimer(1,100);
+            setTimer(1,500);
         }
         lightController(HEATER, RED);
         break;
