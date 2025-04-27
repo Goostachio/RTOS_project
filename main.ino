@@ -22,9 +22,8 @@ void setup() {
   SCH_Add_Task(coolerRun, 0, 1);
   SCH_Add_Task(humidifierRun, 0, 1);
   SCH_Add_Task(timerRun, 0, 1);
-
-  SCH_Add_Task(blinky, 0, 100);
-  SCH_Add_Task(htSensor_read, 0, 500);
+  SCH_Add_Task(blinky, 0, 1);
+  SCH_Add_Task(htSensor_read, 0, 1);
 }
 
 void loop() {
