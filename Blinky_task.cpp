@@ -8,8 +8,7 @@ void blinky(){
     case START:
     setupLight(BOARD);
     setTimer(4,100);
-    lightController(BOARD, ON);
-    blink = NO_BLINK;
+    blink = BLINK;
     break;
 
     case BLINK:
