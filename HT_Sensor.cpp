@@ -15,26 +15,29 @@ void htSensor_read() {
       Serial.begin(115200);
       Wire.begin(GPIO_NUM_11, GPIO_NUM_12);
       dht20.begin();
-      setTimer(0, 500); 
+      setTimer(2, 500); 
       stateSensor = READING;
       break;
 
     case READING:
-      dht20.read();
+      if (isTimerExpired(2) == 1) {
+        setTimer(2, 500);
+        dht20.read();
         float readTemperature = dht20.getTemperature();
         float readHumidity = dht20.getHumidity();
 
-      if (isnan(readTemperature) || isnan(readHumidity)) {
-          Serial.println("Failed to read from DHT sensor!");
-          return;
-      }else {
-          temperature = readTemperature;
-          humidity = readHumidity;
-          Serial.print("collected Temp: "); Serial.print(temperature); Serial.print(" *C ");
-          Serial.print(" collected Humidity: "); Serial.print(humidity); Serial.println(" %");
-      }
-      if (isTimerExpired(0) == 1) {
-        setTimer(0, 500);
+        if (isnan(readTemperature) || isnan(readHumidity)) {
+            Serial.println("Failed to read from DHT sensor!");
+            return;
+        }else {
+            temperature = readTemperature;
+            humidity = readHumidity;
+            Serial.print("Humidity: ");
+            Serial.print(humidity);
+            Serial.print("%  Temperature: ");
+            Serial.print(temperature);
+            Serial.println("°C");
+        }
       }
       break;
   }
