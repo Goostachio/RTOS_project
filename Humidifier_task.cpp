@@ -3,14 +3,18 @@
 #include "software_timer.h"
 #include "Light_control.h"
 
-float humidThreshold = 75;
+float humidThreshold = 60;
 int humidState = INIT;
 
 int checkHumid (){
     if (humidity < humidThreshold){
+        setTimer(5,500);
         return LOW;
     }
-    else return CHECKING;
+    else {
+        setTimer(5,1);
+        return CHECKING;
+    }
 }
 
 void humidifierRun(){
@@ -19,37 +23,34 @@ void humidifierRun(){
     case INIT:
     setupLight(HUMID);
     humidState = checkHumid();
-    setTimer(3,500);
     break;
 
     case LOW:
-    if (isTimerExpired(3) == 1){
+    if (isTimerExpired(5) == 1){
         humidState = MID;
-        setTimer(3,300);
+        setTimer(5,300);
         }
     lightController(HUMID, GREEN);
     break;
 
     case MID:
-    if (isTimerExpired(3) == 1){
+    if (isTimerExpired(5) == 1){
         humidState = HIGH;
-        setTimer(3,200);
+        setTimer(5,200);
         }
     lightController(HUMID, YELLOW);
     break;
 
     case HIGH:
-    if (isTimerExpired(3) == 1){
+    if (isTimerExpired(5) == 1){
         humidState = checkHumid();
-        setTimer(3,500);
     }
     lightController(HUMID, RED);
     break;
 
     case CHECKING:
-        if (isTimerExpired(3) == 1){
+        if (isTimerExpired(5) == 1){
             humidState = checkHumid();
-            setTimer(3,500);
         }
         lightController(HUMID, OFF);
         break;
