@@ -5,7 +5,6 @@
 #define NOT_RISKY 1
 #define SLIGHTLY_RISKY 2
 #define RISKY 3
-#define CHECKING 4
 
     void heater();
 
