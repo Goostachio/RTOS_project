@@ -4,7 +4,7 @@
 #include <Light_control.h>
 
 int coolerState = INIT;
-float coolerThreshold = 33;
+float coolerThreshold = 40;
 
 int checkCooler (){
     if (temperature > coolerThreshold){
@@ -18,21 +18,21 @@ void coolerRun(){
         case INIT:
         setupLight(COOLER);
         coolerState = checkCooler();
-        setTimer(2,500);
+        setTimer(3, 500);
         break;
 
         case COOLING:
-        if (isTimerExpired(2) == 1){
+        if (isTimerExpired(3) == 1){
             coolerState = checkCooler();
-            setTimer(2,500);
+            setTimer(3, 500);
         }
         lightController(COOLER, GREEN);
         break;
 
         case NOT_COOLING:
-        if (isTimerExpired(2) == 1){
+        if (isTimerExpired(3) == 1){
             coolerState = checkCooler();
-            setTimer(2,500);
+            setTimer(3,500);
         }
         lightController(COOLER, RED);
         break;
